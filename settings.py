@@ -1,4 +1,4 @@
-# Django settings for eventex project.
+# Django settings for project project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -75,7 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'eventex.urls'
+ROOT_URLCONF = 'project.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
