@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-    url(r'$', 'django.views.generic.simple.direct_to_template',
-        {'template': 'subscription/new.html'}, name='new'),
+    url(r'$', 'subscription.views.new', name='new'),
 )
