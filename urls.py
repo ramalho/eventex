@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'^$', 'django.views.generic.simple.direct_to_template', {
         'template': 'index.html',
     }),
-    (r'^inscricao/', include('subscription.urls')),
+    (r'^inscricao/', include('subscription.urls', namespace='subscription')),
 )
 
 from django.conf import settings
