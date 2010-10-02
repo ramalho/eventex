@@ -7,5 +7,5 @@ class SubscriptionUrlTest(TestCase):
         response = self.client.get(reverse('subscription:new'))
         self.assertEquals(200, response.status_code)
         self.assertTemplateUsed(response, 'subscription/new.html')
-
+        self.assertTrue(isinstance(response.context['form'], SubscriptionForm))
 
