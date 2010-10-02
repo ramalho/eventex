@@ -2,5 +2,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 
+from subscription.forms import SubscriptionForm
+
+
 def new(request):
-    return render_to_response('subscription/new.html')
+    context = {'form': SubscriptionForm()}
+    return render_to_response('subscription/new.html', context)

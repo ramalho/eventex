@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 
+from subscription.forms import SubscriptionForm
+
 
 class SubscriptionUrlTest(TestCase):
     def test_successful_get_subscription_page(self):
