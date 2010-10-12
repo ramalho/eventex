@@ -1,6 +1,9 @@
 <h1>Formulário de inscrição</h1>
 
+{{ form.errors }}
+
 <form action="." method="POST">
+  {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Enviar!">
 </form>
