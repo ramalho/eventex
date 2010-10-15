@@ -1,5 +1,6 @@
 # coding: utf-8
-from django.http import HttpResponse
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
@@ -14,10 +15,11 @@ from subscription.forms import SubscriptionForm
 #    form = SubscriptionForm(request,)
 
 def subscribe(request):
-    context = RequestContext(request, {'form': SubscriptionForm()})
+    form = SubscriptionForm()
 
     if request.method == 'POST':
-        return render_to_response('subscription/success.html', context)
+        return HttpResponseRedirect(reverse('subscription:success'))
 
+    context = RequestContext(request, {'form': form})
     return render_to_response('subscription/new.html', context)
 

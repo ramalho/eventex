@@ -13,5 +13,5 @@ class SubscriptionUrlTest(TestCase):
 
     def test_redirects_to_success_after_post(self):
         response = self.client.post(reverse('subscription:subscribe'))
-        self.assertEquals(200, response.status_code)
-        self.assertTemplateUsed(response, 'subscription/success.html')
+        self.assertRedirects(response, reverse('subscription:success'))
+
