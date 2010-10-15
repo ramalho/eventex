@@ -10,7 +10,7 @@ class Subscription(models.Model):
 
     # Faz uma inscrição bem sucedida
     >>> Subscription.objects.create(name='Henrique Bastos', cpf='05633165780', email='henrique@bastos.net', phone='21-9618-6180')
-    <Subscription: Subscription object>
+    <Subscription: ...
 
 
     # CPF deve ser único
