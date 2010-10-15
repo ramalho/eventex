@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Formulário de inscrição</h1>
 
-    {{ form.errors }}
+    {{ form.non_field_errors }}
 
     <form action="." method="POST">
         {% csrf_token %}
