@@ -1,0 +1,7 @@
+Olá {{ subscription.name }},
+
+Sua inscrição no EventeX foi efetuada com sucesso.
+
+Caso tenha alguma dúvida, escreva para duvidas@eventex.org
+
+Obrigado!
