@@ -234,20 +234,20 @@ form input {
 }
 
 form p {
-  margin: -35px 0 0 440px;
+  /*margin: -35px 0 0 440px;*/
   padding: 8px;
   width: 300px;
-  position: absolute;
-  border: 1px solid #033649;
-  background-color: #036564;
-  color: #fff;
-  font-size: .9em;
+  /*position: absolute;*/
+  /*border: 1px solid #033649;*/
+  /*background-color: #036564;*/
+  /*color: #fff;*/
+  /*font-size: .9em;*/
   font-family: Arial, Helvetica, Sans-Serif;
 }
 
 form p em {
-  font-size: 1.2em;
-  display: block;
+  /*font-size: 1.2em;*/
+  /*display: block;*/
 }
 
 .info_label {
