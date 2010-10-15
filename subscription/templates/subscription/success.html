@@ -2,5 +2,5 @@
 
 {% block content %}
     <p>Parabéns {{ subscription.name }},</p>
-    <p>sua inscrição foi efetuada com sucesso!</p>
+    <p>sua inscrição foi realizada em {{ subscription.created_at|date:"d/m/Y" }}.</p>
 {% endblock content %}
