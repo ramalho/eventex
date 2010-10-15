@@ -15,5 +15,9 @@ from subscription.forms import SubscriptionForm
 
 def subscribe(request):
     context = RequestContext(request, {'form': SubscriptionForm()})
+
+    if request.method == 'POST':
+        return render_to_response('subscription/success.html', context)
+
     return render_to_response('subscription/new.html', context)
 
