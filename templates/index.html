@@ -1,27 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-	<title>EventeX 2010 | O evento mais sensacional do ano depois do Devinrio! ;-)</title>
-	
-</head>
-
-<body>
-  <h1>Bem-vindo ao EventeX!</h1>
-  <img src="/media/logo.png" alt="logo" style="float: left;" />
-  <p>
-    O evento mais sensacional do ano depois do Dev in Rio!
-  </p>
-  <p>
-    Você não pode perder esta oportunidade!
-  </p>
-  <p>
-    <strong>Abertura das inscrições em 24/10/2010.</strong>
-  </p>
-  <p>
-    Para dúvidas e mais informações entre em contato com <a href="mailto:eventex@eventex.com.br">eventex@eventex.com.br</a>
-  </p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Bem-vindo ao EventeX!</h1>
+    <img src="/media/logo.png" alt="logo" style="float: left;" />
+    <p>O evento mais sensacional do ano depois do Dev in Rio!</p>
+    <p>Você não pode perder esta oportunidade!</p>
+    <p><strong>Abertura das inscrições em 24/10/2010.</strong></p>
+    <p>Para dúvidas e mais informações entre em contato com <a href="mailto:eventex@eventex.com.br">eventex@eventex.com.br</a></p>
+{% endblock content %}
