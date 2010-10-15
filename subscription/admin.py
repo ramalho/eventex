@@ -7,4 +7,6 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'created_at'
 
+    search_fields = ('name', 'cpf', 'email', 'phone', 'created_at')
+
 admin.site.register(Subscription, SubscriptionAdmin)
