@@ -18,5 +18,5 @@ class SubscriptionUrlTest(TestCase):
             'email': 'bdfl@python.org',
             'phone': '+1 754 3020 2000'
         })
-        self.assertRedirects(response, reverse('subscription:success'))
+        self.assertRedirects(response, reverse('subscription:success', args=[1]))
 

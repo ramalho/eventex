@@ -23,7 +23,7 @@ class SubscriptionViewTest(TestCase):
             'email': 'bdfl@python.org',
             'phone': '+1 754 3020 2000'
         })
-        self.assertRedirects(response, reverse('subscription:success'))
+        self.assertRedirects(response, reverse('subscription:success', args=[1]))
         self.assertTrue(Subscription.objects.exists())
 
     def test_if_email_is_sent_after_saving_subscription(self):
@@ -36,7 +36,7 @@ class SubscriptionViewTest(TestCase):
             'email': 'bdfl@python.org',
             'phone': '+1 754 3020 2000'
         })
-        self.assertRedirects(response, reverse('subscription:success'))
+        self.assertRedirects(response, reverse('subscription:success', args=[1]))
 
         # Verifica se um e-mail entrou na fila para ser enviado depois
         # do nosso POST
