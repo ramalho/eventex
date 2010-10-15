@@ -20,6 +20,7 @@ def subscribe(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
+            form.save()
             return HttpResponseRedirect(reverse('subscription:success'))
 
     context = RequestContext(request, {'form': form})
