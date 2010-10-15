@@ -18,7 +18,9 @@ def subscribe(request):
     form = SubscriptionForm()
 
     if request.method == 'POST':
-        return HttpResponseRedirect(reverse('subscription:success'))
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect(reverse('subscription:success'))
 
     context = RequestContext(request, {'form': form})
     return render_to_response('subscription/new.html', context)
