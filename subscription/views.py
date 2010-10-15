@@ -15,13 +15,13 @@ from subscription.forms import SubscriptionForm
 #    form = SubscriptionForm(request,)
 
 def subscribe(request):
-    form = SubscriptionForm()
-
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('subscription:success'))
+    else:
+        form = SubscriptionForm()
 
     context = RequestContext(request, {'form': form})
     return render_to_response('subscription/new.html', context)
