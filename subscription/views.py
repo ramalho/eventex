@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.core.urlresolvers import reverse
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
@@ -18,7 +19,14 @@ def subscribe(request):
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
-            form.save()
+            subscription = form.save()
+            send_mail(
+                subject = u'Inscrição no EventeX',
+                message = u'Sua inscrição foi efetuada com sucesso',
+                from_email = 'contato@eventex.com',
+                recipient_list = [ subscription.email ],
+            )
+
             return HttpResponseRedirect(reverse('subscription:success'))
     else:
         form = SubscriptionForm()
