@@ -11,4 +11,9 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
     list_filter = ('paid', )
 
+    actions = ['mark_as_paid']
+
+    def mark_as_paid(self, request, queryset):
+        queryset.update(paid=True)
+
 admin.site.register(Subscription, SubscriptionAdmin)
