@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from django.contrib import admin
 
 from subscription.models import Subscription
@@ -15,5 +16,6 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
     def mark_as_paid(self, request, queryset):
         queryset.update(paid=True)
+    mark_as_paid.short_description = u"Marcar inscrições como pagas"
 
 admin.site.register(Subscription, SubscriptionAdmin)
