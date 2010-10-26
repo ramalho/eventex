@@ -32,6 +32,7 @@ class Subscription(models.Model):
     email = models.EmailField('E-mail', unique=True)
     phone = models.CharField('Telefone', max_length=20, blank=True)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
+    paid = models.BooleanField('Pago')
 
     def __unicode__(self):
         return u'%s - %s - %s' % (self.pk, self.name, self.email)
