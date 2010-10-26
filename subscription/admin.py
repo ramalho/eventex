@@ -15,7 +15,10 @@ class SubscriptionAdmin(admin.ModelAdmin):
     actions = ['mark_as_paid']
 
     def mark_as_paid(self, request, queryset):
-        queryset.update(paid=True)
+        subscriptions_updated = queryset.update(paid=True)
+        msg = '%d inscrições foram marcadas como pagas' % subscriptions_updated
+        self.message_user(request, msg)
+
     mark_as_paid.short_description = u"Marcar inscrições como pagas"
 
 admin.site.register(Subscription, SubscriptionAdmin)
