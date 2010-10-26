@@ -9,4 +9,6 @@ class SubscriptionAdmin(admin.ModelAdmin):
 
     search_fields = ('name', 'cpf', 'email', 'phone', 'created_at')
 
+    list_filter = ('paid', )
+
 admin.site.register(Subscription, SubscriptionAdmin)
