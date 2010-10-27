@@ -17,3 +17,13 @@ class SubscriptionFormTest(TestCase):
         })
         self.assertFalse(form.is_valid())
         self.assertIn('cpf', form.errors)
+
+    def test_returns_error_if_cpf_is_not_all_digits(self):
+        form = SubscriptionForm({
+            'name': 'User',
+            'cpf': '0123456789a',
+            'email': 'user@gmail.com',
+            'phone': '555-78376',
+        })
+        self.assertFalse(form.is_valid())
+        self.assertIn('cpf', form.errors)

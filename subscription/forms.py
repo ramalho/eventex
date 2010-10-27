@@ -11,6 +11,8 @@ class SubscriptionForm(forms.ModelForm):
 
     def clean_cpf(self):
         data = self.cleaned_data['cpf']
+        if not data.isdigit():
+            raise forms.ValidationError(u'O CPF deve conter apenas números')
         if len(data) != 11:
             raise forms.ValidationError('O CPF deve ter 11 dígitos')
         return data
