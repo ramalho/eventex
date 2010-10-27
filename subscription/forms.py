@@ -5,4 +5,4 @@ from subscription.models import Subscription
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
-        exclude = ('created_at',)
+        exclude = ('created_at', 'paid')
