@@ -1,6 +1,13 @@
 #-*- coding: utf-8 -*-
 from django.db import models
+from django.core.exceptions import ValidationError
 from subscription.receivers import send_subscription_email
+
+def cpf_validator(value):
+    if not value.isdigit():
+        raise ValidationError(u'O CPF deve conter apenas números')
+    if len(value) != 11:
+        raise ValidationError('O CPF deve ter 11 dígitos')
 
 class Subscription(models.Model):
     """
@@ -28,7 +35,7 @@ class Subscription(models.Model):
 
     """
     name = models.CharField('Nome', max_length=100)
-    cpf = models.CharField('CPF', max_length=11, unique=True)
+    cpf = models.CharField('CPF', max_length=11, unique=True, validators=[cpf_validator])
     email = models.EmailField('E-mail', unique=True)
     phone = models.CharField('Telefone', max_length=20, blank=True)
     created_at = models.DateTimeField('Criado em', auto_now_add=True)
