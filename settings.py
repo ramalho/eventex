@@ -57,7 +57,7 @@ MEDIA_URL = '/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = MEDIA_URL + 'admin/'
+ADMIN_MEDIA_PREFIX = '/media-admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'kwgs6y&^*&cp7j&=2x=&*#nrfp_!8!@2@zionvg%%@8$278d&u'
@@ -77,7 +77,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -97,4 +97,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'core',
+    'subscription',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
