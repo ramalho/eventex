@@ -41,3 +41,12 @@ class SubscriptionViewTest(TestCase):
         # Verifica se um e-mail entrou na fila para ser enviado depois
         # do nosso POST
         self.assertEquals(len(mail.outbox), 1)
+
+class ExportSubscriptionViewTest(TestCase):
+
+    def test_if_response_has_correct_content_type(self):
+        self.client.login(username='admin', password='admin')
+        response = self.client.get(reverse('admin:export_subscriptions'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
