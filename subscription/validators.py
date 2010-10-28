@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
-def cpf_validator(value):
+def CpfValidator(value):
     if not value.isdigit():
         raise ValidationError(_(u'O CPF deve conter apenas números'))
     if len(value) != 11:
