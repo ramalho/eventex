@@ -20,3 +20,7 @@ class Talk(models.Model):
 
     def __unicode__(self):
         return unicode(self.title)
+
+class Course(Talk):
+    slots = models.IntegerField()
+    notes = models.TextField()
