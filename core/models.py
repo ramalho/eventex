@@ -24,3 +24,14 @@ class Talk(models.Model):
 class Course(Talk):
     slots = models.IntegerField()
     notes = models.TextField()
+
+CONTACT_TYPES = (
+    ('P', 'Phone'),
+    ('E', 'email'),
+    ('F', 'fax'),
+)
+
+class Contact(models.Model):
+    speaker = models.ForeignKey('Speaker')
+    type = models.CharField(max_length=5, choices=CONTACT_TYPES)
+    value = models.CharField(max_length=255)

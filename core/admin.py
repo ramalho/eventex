@@ -1,6 +1,14 @@
 from django.contrib import admin
-from core.models import Speaker, Talk, Course
+from core.models import Speaker, Talk, Course, Contact
 
-admin.site.register(Speaker)
+class ContactInline(admin.TabularInline):
+    model = Contact
+    extra = 1
+
+class SpeakerAdmin(admin.ModelAdmin):
+    inlines = [ContactInline, ]
+
+admin.site.register(Speaker, SpeakerAdmin)
 admin.site.register(Talk)
 admin.site.register(Course)
+admin.site.register(Contact)
