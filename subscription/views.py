@@ -20,10 +20,17 @@ def create(request):
         context = RequestContext(request, {'form': form})
         return render_to_response('subscription/new.html', context)
 
-    subscription = form.save()
+    s = Subscription()
+    s.name = form.cleaned_data['name']
+    s.cpf = form.cleaned_data['cpf']
+    s.email = form.cleaned_data['email']
+    s.phone = form.cleaned_data['phone']
+    s.save()
+
     # notifica o cadastro
-    send_subscription_email(subscription)
-    return HttpResponseRedirect(reverse('subscription:success', args=[ subscription.pk ]))
+    send_subscription_email(s)
+    return HttpResponseRedirect(reverse('subscription:success', args=[ s.pk ]))
+
 
 def subscribe(request):
     if request.method == 'POST':
