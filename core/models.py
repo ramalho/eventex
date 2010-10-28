@@ -17,3 +17,10 @@ class Talk(models.Model):
     start_time = models.TimeField(blank=True)
 
     speaker = models.ManyToManyField('Speaker')
+
+    def __unicode__(self):
+        return unicode(self.title)
+
+class Course(Talk):
+    slots = models.IntegerField()
+    notes = models.TextField()
