@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 class Speaker(models.Model):
@@ -9,8 +10,19 @@ class Speaker(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
+class TalkMorningManager(models.Manager):
+    def get_query_set(self):
+        return super(TalkMorningManager, self).get_query_set().filter(start_time__lt=datetime.time(12))
+
+class TalkAfternoonManager(models.Manager):
+    def get_query_set(self):
+        return super(TalkAfternoonManager, self).get_query_set().filter(start_time__gte=datetime.time(12))
 
 class Talk(models.Model):
+
+    morning = TalkMorningManager()
+    afternoon = TalkAfternoonManager()
+
     title = models.CharField(max_length=200)
     description = models.TextField()
     day = models.DateField(blank=True)
