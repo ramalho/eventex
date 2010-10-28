@@ -50,3 +50,8 @@ class ExportSubscriptionViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'text/csv')
 
+    def test_if_response_is_attachment(self):
+        self.client.login(username='admin', password='admin')
+        response = self.client.get(reverse('admin:export_subscriptions'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('attachment;' in response['Content-Disposition'])
