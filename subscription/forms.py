@@ -35,7 +35,6 @@ class SubscriptionForm(forms.Form):
     phone = forms.CharField()
 
 # 1 - ModelForm
-
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscription
