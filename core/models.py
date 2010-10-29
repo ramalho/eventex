@@ -12,11 +12,11 @@ class Speaker(models.Model):
 
 class TalkMorningManager(models.Manager):
     def get_query_set(self):
-        return super(TalkMorningManager, self).get_query_set().filter(start_time__lt=datetime.time(12))
+        return super(TalkMorningManager, self).get_query_set().filter(start_time__lt=datetime.time(12)).order_by('start_time')
 
 class TalkAfternoonManager(models.Manager):
     def get_query_set(self):
-        return super(TalkAfternoonManager, self).get_query_set().filter(start_time__gte=datetime.time(12))
+        return super(TalkAfternoonManager, self).get_query_set().filter(start_time__gte=datetime.time(12)).order_by('start_time')
 
 class Talk(models.Model):
 
