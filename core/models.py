@@ -20,6 +20,7 @@ class TalkAfternoonManager(models.Manager):
 
 class Talk(models.Model):
 
+    objects = models.Manager()
     morning = TalkMorningManager()
     afternoon = TalkAfternoonManager()
 
