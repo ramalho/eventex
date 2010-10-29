@@ -19,6 +19,13 @@ class SubscriptionForm(forms.Form):
             return self.cleaned_data['cpf']
         raise forms.ValidationError(_(u'Este CPF já está inscrito.'))
 
+    def clean_email(self):
+        try:
+            s = Subscription.objects.get(email=self.cleaned_data['email'])
+        except Subscription.DoesNotExist:
+            return self.cleaned_data['email']
+        raise forms.ValidationError(_(u'Este e-mail já está inscrito.'))
+
 """
 #4 - Mais parâmetros que refletem validação.
 class SubscriptionForm(forms.Form):
