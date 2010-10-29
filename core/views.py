@@ -1,7 +1,7 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
-from core.models import Talk
+from core.models import Talk, Speaker
 
 
 def homepage(request):
@@ -16,3 +16,10 @@ def talks(request):
         'afternoon_talks': Talk.afternoon.filter(),
     })
     return render_to_response('core/talks.html', context)
+
+def speaker(request, speaker_id):
+    speaker = get_object_or_404(Speaker, id=speaker_id)
+    context = RequestContext(request, {
+        'speaker': speaker,
+    })
+    return render_to_response('core/speaker.html', context)
