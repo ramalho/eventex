@@ -26,6 +26,12 @@ class SubscriptionForm(forms.Form):
     def clean_email(self):
         return self._unique_check('email', _(u'Este e-mail já está inscrito.'))
 
+    def clean(self):
+        if not self.cleaned_data.get('email') and \
+           not self.cleaned_data.get('phone'):
+            raise forms.ValidationError(
+                _(u'Você precisa informar seu e-mail ou seu telefone.'))
+        return self.cleaned_data
 
 """
 #4 - Mais parâmetros que refletem validação.
