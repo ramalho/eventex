@@ -26,7 +26,6 @@ class Talk(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    day = models.DateField(blank=True)
     start_time = models.TimeField(blank=True)
 
     speaker = models.ManyToManyField('Speaker')
