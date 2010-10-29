@@ -6,7 +6,7 @@
     <div class="palestra">
         <h4>{{ talk.start_time }} - {{ talk.title }}</h4>
         {% for speaker in talk.speaker.all %}
-            <h5><a href="{% url core:speaker speaker.pk %}">{{ speaker.name }}</a></h5>
+            <h5><a href="{% url core:speaker speaker.slug %}">{{ speaker.name }}</a></h5>
         {% endfor %}
         <p>{{ talk.description }}</p>
     </div>
@@ -19,7 +19,7 @@
     <div class="palestra">
         <h4>{{ talk.start_time }} - {{ talk.title }}</h4>
         {% for speaker in talk.speaker.all %}
-        <h5><a href="{% url core:speaker speaker.pk %}">{{ speaker.name }}</a></h5>
+        <h5><a href="{% url core:speaker speaker.slug %}">{{ speaker.name }}</a></h5>
         {% endfor %}
         <p>{{ talk.description }}</p>
     </div>

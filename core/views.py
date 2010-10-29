@@ -17,8 +17,8 @@ def talks(request):
     })
     return render_to_response('core/talks.html', context)
 
-def speaker(request, speaker_id):
-    speaker = get_object_or_404(Speaker, id=speaker_id)
+def speaker(request, slug):
+    speaker = get_object_or_404(Speaker, slug=slug)
     context = RequestContext(request, {
         'speaker': speaker,
     })
