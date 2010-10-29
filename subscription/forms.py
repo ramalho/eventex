@@ -12,19 +12,20 @@ class SubscriptionForm(forms.Form):
     email = forms.EmailField(label=_('E-mail'))
     phone = forms.CharField(label=_('Telefone'), required=False, max_length=20)
 
-    def clean_cpf(self):
+    def _unique_check(self, fieldname, error_message):
+        param = { fieldname: self.cleaned_data[fieldname] }
         try:
-            s = Subscription.objects.get(cpf=self.cleaned_data['cpf'])
+            s = Subscription.objects.get(**param)
         except Subscription.DoesNotExist:
-            return self.cleaned_data['cpf']
-        raise forms.ValidationError(_(u'Este CPF já está inscrito.'))
+            return self.cleaned_data[fieldname]
+        raise forms.ValidationError(error_message)
+
+    def clean_cpf(self):
+        return self._unique_check('cpf', _(u'Este CPF já está inscrito.'))
 
     def clean_email(self):
-        try:
-            s = Subscription.objects.get(email=self.cleaned_data['email'])
-        except Subscription.DoesNotExist:
-            return self.cleaned_data['email']
-        raise forms.ValidationError(_(u'Este e-mail já está inscrito.'))
+        return self._unique_check('email', _(u'Este e-mail já está inscrito.'))
+
 
 """
 #4 - Mais parâmetros que refletem validação.
