@@ -12,6 +12,13 @@ class SubscriptionForm(forms.Form):
     email = forms.EmailField(label=_('E-mail'))
     phone = forms.CharField(label=_('Telefone'), required=False, max_length=20)
 
+    def clean_cpf(self):
+        try:
+            s = Subscription.objects.get(cpf=self.cleaned_data['cpf'])
+        except Subscription.DoesNotExist:
+            return self.cleaned_data['cpf']
+        raise forms.ValidationError(_(u'Este CPF já está inscrito.'))
+
 """
 #4 - Mais parâmetros que refletem validação.
 class SubscriptionForm(forms.Form):
