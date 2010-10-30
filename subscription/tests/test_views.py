@@ -41,3 +41,27 @@ class SubscriptionViewTest(TestCase):
         # Verifica se um e-mail entrou na fila para ser enviado depois
         # do nosso POST
         self.assertEquals(len(mail.outbox), 1)
+
+class ExportSubscriptionViewTest(TestCase):
+
+    def test_if_response_has_correct_content_type(self):
+        self.client.login(username='admin', password='admin')
+        response = self.client.get(reverse('admin:export_subscriptions'))
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'text/csv')
+
+    def test_if_response_is_attachment(self):
+        self.client.login(username='admin', password='admin')
+        response = self.client.get(reverse('admin:export_subscriptions'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('attachment;' in response['Content-Disposition'])
+
+    def test_if_user_not_logged_in_cant_export(self):
+        response = self.client.get(reverse('admin:export_subscriptions'))
+
+        self.assertEqual(response.status_code, 200)
+        # Quando o usuário não está autenticado o retorno é o
+        # html de login do Django. O melhor jeito de testar isso
+        # foi com o Content-Type, já que o Django não usa um
+        # redirect para a tela de login.
+        self.assertNotEqual(response['Content-Type'], 'text/csv')
