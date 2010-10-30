@@ -5,6 +5,22 @@ from django.utils.translation import ugettext_lazy as _
 from subscription import validators
 
 
+#6 - ModelForm completo
+class SubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = Subscription
+        exclude = ('created_at', 'paid')
+
+    def clean(self):
+        super(SubscriptionForm, self).clean()
+
+        if not self.cleaned_data.get('email') and \
+           not self.cleaned_data.get('phone'):
+            raise forms.ValidationError(
+                _(u'Você precisa informar seu e-mail ou seu telefone.'))
+        return self.cleaned_data
+
+"""
 #5 - CpfValidator
 class SubscriptionForm(forms.Form):
     name = forms.CharField(label=_('Nome'), max_length=100)
@@ -33,7 +49,6 @@ class SubscriptionForm(forms.Form):
                 _(u'Você precisa informar seu e-mail ou seu telefone.'))
         return self.cleaned_data
 
-"""
 #4 - Mais parâmetros que refletem validação.
 class SubscriptionForm(forms.Form):
     name = forms.CharField(label=_('Nome'), max_length=100)
