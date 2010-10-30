@@ -4,12 +4,13 @@ from subscription.models import Subscription
 from django.utils.translation import ugettext_lazy as _
 from subscription import validators
 from django.core.validators import EMPTY_VALUES
-from django.core.exceptions import ValidationError
 
 
 class PhoneWidget(forms.MultiWidget):
     def __init__(self, attrs=None):
-        widgets = (forms.TextInput(attrs=attrs), forms.TextInput(attrs=attrs))
+        widgets = (
+            forms.TextInput(attrs=attrs),
+            forms.TextInput(attrs=attrs))
         super(PhoneWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
@@ -19,28 +20,19 @@ class PhoneWidget(forms.MultiWidget):
 
 class PhoneField(forms.MultiValueField):
     widget = PhoneWidget
-    default_error_messages = {
-        'invalid_ddd': _(u'Digite um DDD válido.'),
-        'invalid_number': _(u'Digite um número válido.'),
-    }
 
     def __init__(self, *args, **kwargs):
-        errors = self.default_error_messages.copy()
-        if 'error_messages' in kwargs:
-            errors.update(kwargs['error_messages'])
-
         fields = (
-            forms.IntegerField(error_messages={'invalid': errors['invalid_ddd']}),
-            forms.IntegerField(error_messages={'invalid': errors['invalid_number']}),
-        )
+            forms.IntegerField(),
+            forms.IntegerField())
         super(PhoneField, self).__init__(fields, *args, **kwargs)
 
     def compress(self, data_list):
         if data_list:
             if data_list[0] in EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_ddd'])
+                raise forms.ValidationError(u'DDD inválido.')
             if data_list[1] in EMPTY_VALUES:
-                raise ValidationError(self.error_messages['invalid_number'])
+                raise forms.ValidationError(u'Número inválido.')
             return '%s-%s' % tuple(data_list)
         return None
 
