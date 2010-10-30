@@ -30,3 +30,11 @@ class SubscriptionFormTest(TestCase):
         self.assertFalse(form.is_valid())
         #self.assertIn('cpf', form.errors)
         self.assertTrue(form.errors.get('cpf'))
+
+    def test_must_inform_email_or_phone(self):
+        form = SubscriptionForm({
+            'name': 'User',
+            'cpf': '01234567891',
+        })
+        self.assertFalse(form.is_valid())
+        self.assertTrue(form.errors.get('__all__'))
