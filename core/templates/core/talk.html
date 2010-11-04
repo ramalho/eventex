@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>{{ talk.title }}</h4>
+{% for speaker in talk.speaker.all %}
+    <h5><a href="{% url core:speaker speaker.slug %}">{{ speaker.name }}</a></h5>
+{% endfor %}
+<p>{{ talk.description }}</p>
+{% endblock content %}
