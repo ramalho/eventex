@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 import datetime
 from django.db import models
 
@@ -48,3 +49,17 @@ class Contact(models.Model):
     speaker = models.ForeignKey('Speaker')
     type = models.CharField(max_length=5, choices=CONTACT_TYPES)
     value = models.CharField(max_length=255)
+
+
+MEDIA_TYPES = (
+    ('SL', 'SlideShare'),
+    ('YT', 'Youtube'),
+)
+class Media(models.Model):
+    talk = models.ForeignKey('Talk')
+    type = models.CharField(max_length=3, choices=MEDIA_TYPES)
+    title = models.CharField(u'Título (no caso do slideshare será usado como doc_id)', max_length=255)
+    media_id = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.talk.title, self.title)
