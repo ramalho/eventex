@@ -19,8 +19,12 @@ def talks(request):
 
 def talk_details(request, talk_id):
     talk = get_object_or_404(Talk, id=talk_id)
+    slides = talk.media_set.filter(type="SL")
+    videos = talk.media_set.filter(type="YT")
     context = RequestContext(request, {
         'talk': talk,
+        'slides': slides,
+        'videos': videos,
     })
     return render_to_response('core/talk.html', context)
 
