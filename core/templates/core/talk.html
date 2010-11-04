@@ -6,4 +6,5 @@
     <h5><a href="{% url core:speaker speaker.slug %}">{{ speaker.name }}</a></h5>
 {% endfor %}
 <p>{{ talk.description }}</p>
+<p><a href="{% url core:talks %}">voltar</a></p>
 {% endblock content %}
