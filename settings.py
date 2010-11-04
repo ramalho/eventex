@@ -100,4 +100,5 @@ INSTALLED_APPS = (
     'south',
     'core',
     'subscription',
+    'embed',
 )
