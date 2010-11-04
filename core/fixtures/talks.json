@@ -1,0 +1,73 @@
+[
+    {
+        "pk": 1,
+        "model": "core.speaker",
+        "fields": {
+            "url": "http://henriquebastos.net/",
+            "email": "henrique@batos.net",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. ",
+            "name": "Henrique Bastos",
+            "slug": "henrique-bastos"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "core.talk",
+        "fields": {
+            "start_time": "15:00:00",
+            "speaker": [
+                1
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. Nunc dapibus feugiat lorem in hendrerit. Vivamus porttitor sagittis congue. Donec sed sem mollis mi pulvinar dignissim. Donec ultrices commodo condimentum. Vestibulum vel neque sed neque tristique tincidunt ut vel sapien. Mauris eget consectetur enim. Sed vehicula bibendum risus vitae tincidunt. Praesent lobortis hendrerit magna. Quisque ac ultrices diam. Vestibulum aliquet, lorem sit amet rhoncus porttitor, neque enim congue lorem, sit amet eleifend libero nisi vehicula elit. Duis sed imperdiet libero. ",
+            "title": "Coding Dojo"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.talk",
+        "fields": {
+            "start_time": "08:00:00",
+            "speaker": [
+                1
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. Nunc dapibus feugiat lorem in hendrerit. Vivamus porttitor sagittis congue. Donec sed sem mollis mi pulvinar dignissim. Donec ultrices commodo condimentum. Vestibulum vel neque sed neque tristique tincidunt ut vel sapien. Mauris eget consectetur enim. Sed vehicula bibendum risus vitae tincidunt. Praesent lobortis hendrerit magna. Quisque ac ultrices diam. Vestibulum aliquet, lorem sit amet rhoncus porttitor, neque enim congue lorem, sit amet eleifend libero nisi vehicula elit. Duis sed imperdiet libero. ",
+            "title": "Small Acts"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.talk",
+        "fields": {
+            "start_time": "17:00:00",
+            "speaker": [
+                1
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. Nunc dapibus feugiat lorem in hendrerit. Vivamus porttitor sagittis congue. Donec sed sem mollis mi pulvinar dignissim. Donec ultrices commodo condimentum. Vestibulum vel neque sed neque tristique tincidunt ut vel sapien. Mauris eget consectetur enim. Sed vehicula bibendum risus vitae tincidunt. Praesent lobortis hendrerit magna. Quisque ac ultrices diam. Vestibulum aliquet, lorem sit amet rhoncus porttitor, neque enim congue lorem, sit amet eleifend libero nisi vehicula elit. Duis sed imperdiet libero.",
+            "title": "Testes no django"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.talk",
+        "fields": {
+            "start_time": "10:00:00",
+            "speaker": [
+                1
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. Nunc dapibus feugiat lorem in hendrerit. Vivamus porttitor sagittis congue. Donec sed sem mollis mi pulvinar dignissim. Donec ultrices commodo condimentum. Vestibulum vel neque sed neque tristique tincidunt ut vel sapien. Mauris eget consectetur enim. Sed vehicula bibendum risus vitae tincidunt. Praesent lobortis hendrerit magna. Quisque ac ultrices diam. Vestibulum aliquet, lorem sit amet rhoncus porttitor, neque enim congue lorem, sit amet eleifend libero nisi vehicula elit. Duis sed imperdiet libero. ",
+            "title": "Introdu\u00e7\u00e3o ao Django"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "core.talk",
+        "fields": {
+            "start_time": "12:00:00",
+            "speaker": [
+                1
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nulla nisl, ultrices ut varius sed, tristique non eros. Morbi a lectus lacus. Aenean felis urna, scelerisque nec fringilla et, tempor a ligula. Integer eleifend sollicitudin consectetur. Nunc dapibus feugiat lorem in hendrerit. Vivamus porttitor sagittis congue. Donec sed sem mollis mi pulvinar dignissim. Donec ultrices commodo condimentum. Vestibulum vel neque sed neque tristique tincidunt ut vel sapien. Mauris eget consectetur enim. Sed vehicula bibendum risus vitae tincidunt. Praesent lobortis hendrerit magna. Quisque ac ultrices diam. Vestibulum aliquet, lorem sit amet rhoncus porttitor, neque enim congue lorem, sit amet eleifend libero nisi vehicula elit. Duis sed imperdiet libero. ",
+            "title": "Herike.com"
+        }
+    }
+]
