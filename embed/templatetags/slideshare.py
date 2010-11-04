@@ -15,12 +15,22 @@ def do_slideshare(parser, token):
 
 class SlideShareNode(Node):
     def __init__(self, id_, doc):
-        self.id = id_
-        self.doc = doc
+        self.id = template.Variable(id_)
+        self.doc = template.Variable(doc)
 
     def render(self, context):
+        try:
+            actual_id = self.id.resolve(context)
+        except template.VariableDoesNotExist:
+            actual_id = self.id
+
+        try:
+            actual_doc = self.doc.resolve(context)
+        except template.VariableDoesNotExist:
+            actual_doc = self.doc
+
         t = loader.get_template('embed/slideshare.html')
-        c = Context({'id': self.id, 'doc': self.doc}, autoescape=context.autoescape)
+        c = Context({'id': actual_id, 'doc': actual_doc}, autoescape=context.autoescape)
         return t.render(c)
 
 
