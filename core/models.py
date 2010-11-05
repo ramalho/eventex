@@ -16,6 +16,7 @@ class Speaker(models.Model):
 
 class KindContactManager(models.Manager):
     def __init__(self, kind):
+        super(KindContactManager, self).__init__()
         self.kind = kind
 
     def get_query_set(self):
