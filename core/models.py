@@ -14,6 +14,24 @@ class Speaker(models.Model):
         return self.name
 
 
+class PhoneContactManager(models.Manager):
+    def get_query_set(self):
+        qs = super(PhoneContactManager, self).get_query_set()
+        qs = qs.filter(kind='P')
+        return qs
+
+class EmailContactManager(models.Manager):
+    def get_query_set(self):
+        qs = super(EmailContactManager, self).get_query_set()
+        qs = qs.filter(kind='E')
+        return qs
+
+class FaxContactManager(models.Manager):
+    def get_query_set(self):
+        qs = super(FaxContactManager, self).get_query_set()
+        qs = qs.filter(kind='F')
+        return qs
+
 class Contact(models.Model):
     KINDS = (
         ('P', _('Telefone')),
@@ -24,6 +42,10 @@ class Contact(models.Model):
     speaker = models.ForeignKey('Speaker')
     kind = models.CharField(max_length=1, choices=KINDS)
     value = models.CharField(max_length=255)
+
+    phones = PhoneContactManager()
+    emails = EmailContactManager()
+    faxes = FaxContactManager()
 
     def __unicode__(self):
         return u'%s, %s' % (self.kind, self.value)
