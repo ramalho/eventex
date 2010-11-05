@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if speaker.avatar %}
-    <img src="{{ speaker.avatar.url }}" alt="{{ speaker.name }}" />
+    <p><img src="{{ speaker.avatar.url }}" alt="{{ speaker.name }}" /></p>
 {% endif %}
 <h4><a href="{{ speaker.url }}">{{ speaker.name }}</a></h4>
 <p>{{ speaker.description }}</p>
