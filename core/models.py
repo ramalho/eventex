@@ -58,27 +58,23 @@ class PeriodManager(models.Manager):
         return qs
 
 
-class Session(models.Model):
+class Talk(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.TimeField(blank=True)
 
     objects = PeriodManager()
 
-    class Meta:
-        abstract = True
-
     speaker = models.ManyToManyField('Speaker')
 
     def __unicode__(self):
         return unicode(self.title)
 
-class Talk(Session):
-    pass
 
-class Course(Session):
+class Course(Talk):
     slots = models.IntegerField()
     notes = models.TextField()
+
 
 MEDIA_TYPES = (
     ('SL', 'SlideShare'),
