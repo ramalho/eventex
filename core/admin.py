@@ -12,5 +12,4 @@ class SpeakerAdmin(admin.ModelAdmin):
 admin.site.register(Speaker, SpeakerAdmin)
 admin.site.register(Talk)
 admin.site.register(Course)
-admin.site.register(Contact)
 admin.site.register(Media)
