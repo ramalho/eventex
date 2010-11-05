@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<img src="{{ speaker.avatar.url }}" alt="{{ speaker.name }}" />
+{% if speaker.avatar %}
+    <img src="{{ speaker.avatar.url }}" alt="{{ speaker.name }}" />
+{% endif %}
 <h4><a href="{{ speaker.url }}">{{ speaker.name }}</a></h4>
 <p>{{ speaker.description }}</p>
 {% endblock content %}
