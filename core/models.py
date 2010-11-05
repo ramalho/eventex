@@ -8,7 +8,6 @@ class Speaker(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     url = models.URLField(verify_exists=False)
-    email = models.EmailField()
     description = models.TextField(blank=True)
 
     def __unicode__(self):
