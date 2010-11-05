@@ -84,14 +84,15 @@ class CodingCourse(Course):
         return "Let's hack! at %s" % self.title
 
 
-MEDIA_TYPES = (
-    ('SL', 'SlideShare'),
-    ('YT', 'Youtube'),
-)
 class Media(models.Model):
+    MEDIAS = (
+        ('SL', 'SlideShare'),
+        ('YT', 'Youtube'),
+    )
+
     talk = models.ForeignKey('Talk')
-    type = models.CharField(max_length=3, choices=MEDIA_TYPES)
-    title = models.CharField(u'Título (no caso do slideshare será usado como doc_id)', max_length=255)
+    type = models.CharField(max_length=3, choices=MEDIAS)
+    title = models.CharField(u'Título', max_length=255, help_text=u'No caso do slideshare será usado como doc_id.')
     media_id = models.CharField(max_length=255)
 
     def __unicode__(self):
