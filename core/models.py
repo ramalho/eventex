@@ -22,7 +22,6 @@ class TalkAfternoonManager(models.Manager):
         return super(TalkAfternoonManager, self).get_query_set().filter(start_time__gte=datetime.time(12)).order_by('start_time')
 
 class Talk(models.Model):
-
     objects = models.Manager()
     morning = TalkMorningManager()
     afternoon = TalkAfternoonManager()
