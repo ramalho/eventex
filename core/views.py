@@ -12,8 +12,8 @@ def homepage(request):
 
 def talks(request):
     context = RequestContext(request, {
-        'morning_talks': Talk.morning.filter(),
-        'afternoon_talks': Talk.afternoon.filter(),
+        'morning_talks': Talk.objects.at_morning(),
+        'afternoon_talks': Talk.objects.at_afternoon(),
     })
     return render_to_response('core/talks.html', context)
 
