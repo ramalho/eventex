@@ -11,7 +11,7 @@ class Speaker(models.Model):
     description = models.TextField(blank=True)
 
     def __unicode__(self):
-        return unicode(self.name)
+        return self.name
 
 
 class Contact(models.Model):
