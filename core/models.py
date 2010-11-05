@@ -76,6 +76,14 @@ class Course(Talk):
     notes = models.TextField()
 
 
+class CodingCourse(Course):
+    class Meta:
+        proxy = True
+
+    def do_some_python_stuff(self):
+        return "Let's hack! at %s" % self.title
+
+
 MEDIA_TYPES = (
     ('SL', 'SlideShare'),
     ('YT', 'Youtube'),
