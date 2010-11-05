@@ -44,30 +44,39 @@ class Contact(models.Model):
         return u'%s, %s' % (self.kind, self.value)
 
 
-class TalkMorningManager(models.Manager):
-    def get_query_set(self):
-        return super(TalkMorningManager, self).get_query_set().filter(start_time__lt=datetime.time(12)).order_by('start_time')
+class PeriodManager(models.Manager):
+    midday = datetime.time(12)
 
-class TalkAfternoonManager(models.Manager):
-    def get_query_set(self):
-        return super(TalkAfternoonManager, self).get_query_set().filter(start_time__gte=datetime.time(12)).order_by('start_time')
+    def at_morning(self):
+        qs = self.filter(start_time__lt=self.midday)
+        qs = qs.order_by('start_time')
+        return qs
 
-class Talk(models.Model):
+    def at_afternoon(self):
+        qs = self.filter(start_time__gte=self.midday)
+        qs = qs.order_by('start_time')
+        return qs
 
-    objects = models.Manager()
-    morning = TalkMorningManager()
-    afternoon = TalkAfternoonManager()
 
+class Session(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.TimeField(blank=True)
+
+    objects = PeriodManager()
+
+    class Meta:
+        abstract = True
 
     speaker = models.ManyToManyField('Speaker')
 
     def __unicode__(self):
         return unicode(self.title)
 
-class Course(Talk):
+class Talk(Session):
+    pass
+
+class Course(Session):
     slots = models.IntegerField()
     notes = models.TextField()
 
