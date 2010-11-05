@@ -25,6 +25,9 @@ class Contact(models.Model):
     kind = models.CharField(max_length=1, choices=KINDS)
     value = models.CharField(max_length=255)
 
+    def __unicode__(self):
+        return u'%s, %s' % (self.kind, self.value)
+
 
 class TalkMorningManager(models.Manager):
     def get_query_set(self):
