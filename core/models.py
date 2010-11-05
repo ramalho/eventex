@@ -9,6 +9,7 @@ class Speaker(models.Model):
     slug = models.SlugField()
     url = models.URLField(verify_exists=False)
     description = models.TextField(blank=True)
+    avatar = models.FileField(upload_to='palestrantes', blank=True, null=True)
 
     def __unicode__(self):
         return self.name
@@ -23,6 +24,7 @@ class KindContactManager(models.Manager):
         qs = super(KindContactManager, self).get_query_set()
         qs = qs.filter(kind=self.kind)
         return qs
+
 
 class Contact(models.Model):
     KINDS = (
