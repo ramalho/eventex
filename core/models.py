@@ -8,6 +8,7 @@ class Speaker(models.Model):
     url = models.URLField(verify_exists=False)
     email = models.EmailField()
     description = models.TextField()
+    avatar = models.FileField(upload_to='palestrantes', null=True)
 
     def __unicode__(self):
         return unicode(self.name)
