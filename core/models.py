@@ -1,16 +1,31 @@
 #-*- coding: utf-8 -*-
 import datetime
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 
 class Speaker(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField()
     url = models.URLField(verify_exists=False)
     email = models.EmailField()
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     def __unicode__(self):
         return unicode(self.name)
+
+
+class Contact(models.Model):
+    KINDS = (
+        ('P', _('Telefone')),
+        ('E', _('E-mail')),
+        ('F', _('Fax')),
+    )
+
+    speaker = models.ForeignKey('Speaker')
+    kind = models.CharField(max_length=1, choices=KINDS)
+    value = models.CharField(max_length=255)
+
 
 class TalkMorningManager(models.Manager):
     def get_query_set(self):
@@ -38,18 +53,6 @@ class Talk(models.Model):
 class Course(Talk):
     slots = models.IntegerField()
     notes = models.TextField()
-
-CONTACT_TYPES = (
-    ('P', 'Phone'),
-    ('E', 'email'),
-    ('F', 'fax'),
-)
-
-class Contact(models.Model):
-    speaker = models.ForeignKey('Speaker')
-    type = models.CharField(max_length=5, choices=CONTACT_TYPES)
-    value = models.CharField(max_length=255)
-
 
 MEDIA_TYPES = (
     ('SL', 'SlideShare'),
