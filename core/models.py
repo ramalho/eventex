@@ -43,6 +43,7 @@ class Contact(models.Model):
     kind = models.CharField(max_length=1, choices=KINDS)
     value = models.CharField(max_length=255)
 
+    objects = models.Manager()
     phones = PhoneContactManager()
     emails = EmailContactManager()
     faxes = FaxContactManager()
