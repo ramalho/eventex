@@ -5,11 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Speaker(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(_(u'nome'), max_length=255)
     slug = models.SlugField()
     url = models.URLField(verify_exists=False)
-    description = models.TextField(blank=True)
-    avatar = models.FileField(upload_to='palestrantes', blank=True, null=True)
+    description = models.TextField(_(u'descrição'), blank=True)
+    avatar = models.FileField(_('foto'), upload_to='palestrantes', blank=True, null=True)
+
+    class Meta:
+        verbose_name = _('Palestrante')
 
     def __unicode__(self):
         return self.name
@@ -33,14 +36,17 @@ class Contact(models.Model):
         ('F', _('Fax')),
     )
 
-    speaker = models.ForeignKey('Speaker')
-    kind = models.CharField(max_length=1, choices=KINDS)
-    value = models.CharField(max_length=255)
+    speaker = models.ForeignKey('Speaker', verbose_name=_('Palestrante'))
+    kind = models.CharField(_('Tipo'), max_length=1, choices=KINDS)
+    value = models.CharField(_('Valor'), max_length=255)
 
     objects = models.Manager()
     phones = KindContactManager('P')
     emails = KindContactManager('E')
     faxes = KindContactManager('F')
+
+    class Meta:
+        verbose_name = _('Contato')
 
     def __unicode__(self):
         return u'%s, %s' % (self.kind, self.value)
@@ -61,13 +67,15 @@ class PeriodManager(models.Manager):
 
 
 class Talk(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start_time = models.TimeField(blank=True)
+    title = models.CharField(_(u'título'), max_length=200)
+    description = models.TextField(_(u'descrição'), blank=True)
+    start_time = models.TimeField(_(u'horário'), blank=True)
+    speakers = models.ManyToManyField('Speaker', verbose_name=_('palestrante'))
 
     objects = PeriodManager()
 
-    speaker = models.ManyToManyField('Speaker')
+    class Meta:
+        verbose_name = _('Palestra')
 
     def __unicode__(self):
         return unicode(self.title)
@@ -76,6 +84,9 @@ class Talk(models.Model):
 class Course(Talk):
     slots = models.IntegerField()
     notes = models.TextField()
+
+    class Meta:
+        verbose_name = _('Curso')
 
 
 class CodingCourse(Course):
