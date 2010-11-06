@@ -3,26 +3,14 @@
 {% block content %}
 <h3>Manhã</h3>
 {% for talk in morning_talks %}
-    <div class="palestra">
-        <h4><a href="{% url core:talk_details talk.id %}">{{ talk.start_time }} - {{ talk.title }}</a></h4>
-        {% for speaker in talk.speaker.all %}
-            <h5><a href="{% url core:speaker speaker.slug %}" title="{{ speaker.description|truncatewords:20 }}">{{ speaker.name }}</a></h5>
-        {% endfor %}
-        <p>{{ talk.description }}</p>
-    </div>
+    {% include 'core/talks_snippet.html' %}
 {% empty %}
     <p>Não existem palestras durante a manhã.</p>
 {% endfor %}
 <hr style="display: block"/>
 <h3>Tarde</h3>
 {% for talk in afternoon_talks %}
-    <div class="palestra">
-        <h4><a href="{% url core:talk_details talk.id %}">{{ talk.start_time }} - {{ talk.title }}</a></h4>
-        {% for speaker in talk.speaker.all %}
-            <h5><a href="{% url core:speaker speaker.slug %}" title="{{ speaker.description|truncatewords:20 }}">{{ speaker.name }}</a></h5>
-        {% endfor %}
-        <p>{{ talk.description }}</p>
-    </div>
+    {% include 'core/talks_snippet.html' %}
 {% empty %}
     <p>Não existem palestras durante a tarde.</p>
 {% endfor %}
