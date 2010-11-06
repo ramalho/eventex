@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.views.generic.simple import direct_to_template
 
 from core.models import Talk, Speaker
 
@@ -19,18 +20,13 @@ def talks(request):
 
 def talk_details(request, talk_id):
     talk = get_object_or_404(Talk, id=talk_id)
-    slides = talk.media_set.filter(type="SL")
-    videos = talk.media_set.filter(type="YT")
-    context = RequestContext(request, {
+    return direct_to_template(request, 'core/talk.html', {
         'talk': talk,
-        'slides': slides,
-        'videos': videos,
+        'slides': talk.media_set.filter(type="SL"),
+        'videos': talk.media_set.filter(type="YT"),
     })
-    return render_to_response('core/talk.html', context)
+
 
 def speaker(request, slug):
     speaker = get_object_or_404(Speaker, slug=slug)
-    context = RequestContext(request, {
-        'speaker': speaker,
-    })
-    return render_to_response('core/speaker.html', context)
+    return direct_to_template(request, 'core/speaker.html', {'speaker': speaker})
