@@ -6,6 +6,7 @@
             "url": "http://henriquebastos.net/", 
             "description": "Henrique Bastos \u00e9 apaixonado por desenvolvimento de software! Trabalha desenvolvendo sistemas com Python, Django e M\u00e9todos \u00c1geis. Al\u00e9m de atuar constantemente nas comunidades de software organizando eventos e encontros, ministrando palestras, cursos e evangelizando o desenvolvimento sustent\u00e1vel de software, no Brasil e no exterior.", 
             "name": "Henrique Bastos", 
+            "avatar": "", 
             "slug": "henrique-bastos"
         }
     }, 
@@ -32,10 +33,10 @@
         "model": "core.talk", 
         "fields": {
             "start_time": "08:00:00", 
-            "speaker": [
+            "description": "Saia do lugar e fa\u00e7a a diferen\u00e7a! Descubra como utilizar o mundo virtual para organizar grupos de pessoas de forma colaborativa, distribu\u00edda e auto-gerenciada no mundo real. Conhe\u00e7a as li\u00e7\u00f5es aprendidas com a experi\u00eancia de mais de 2 anos empreendendo a comunidade de software do Rio de Janeiro. Uma comunidade que come\u00e7ou local e vem se expandindo para al\u00e9m das fronteiras do estado e do pa\u00eds.", 
+            "speakers": [
                 1
             ], 
-            "description": "Saia do lugar e fa\u00e7a a diferen\u00e7a! Descubra como utilizar o mundo virtual para organizar grupos de pessoas de forma colaborativa, distribu\u00edda e auto-gerenciada no mundo real. Conhe\u00e7a as li\u00e7\u00f5es aprendidas com a experi\u00eancia de mais de 2 anos empreendendo a comunidade de software do Rio de Janeiro. Uma comunidade que come\u00e7ou local e vem se expandindo para al\u00e9m das fronteiras do estado e do pa\u00eds.", 
             "title": "Empreendendo Comunidades de Sucesso"
         }
     }, 
@@ -44,10 +45,10 @@
         "model": "core.talk", 
         "fields": {
             "start_time": "17:00:00", 
-            "speaker": [
+            "description": "Muito se fala sobre gest\u00e3o de projetos com m\u00e9todos \u00e1geis,\r\nmas pouco se fala do processo de desenvolvimento de software em si.\r\nCom um enfoque pr\u00e1tico, vamos explorar as t\u00e9cnicas e processos \u00e1geis\r\nessenciais para fazer a diferen\u00e7a e garantir um desenvolvimento de\r\nsoftwarecom realmente \u00e1gil.", 
+            "speakers": [
                 1
             ], 
-            "description": "Muito se fala sobre gest\u00e3o de projetos com m\u00e9todos \u00e1geis,\r\nmas pouco se fala do processo de desenvolvimento de software em si.\r\nCom um enfoque pr\u00e1tico, vamos explorar as t\u00e9cnicas e processos \u00e1geis\r\nessenciais para fazer a diferen\u00e7a e garantir um desenvolvimento de\r\nsoftwarecom realmente \u00e1gil.", 
             "title": "Ecossistema do Desenvolvimento \u00c1gil"
         }
     }, 
@@ -56,10 +57,10 @@
         "model": "core.talk", 
         "fields": {
             "start_time": "10:00:00", 
-            "speaker": [
+            "description": "Django \u00e9 um framework web escrito em Python, que possibilita o desenvolvimento de sistemas web de alta performance com eleg\u00e2ncia e rapidez. Usado por milhares de sites no mundo inteiro, Django \u00e9 desenvolvido por uma grande comunidade que tem como filosofia potencializar o desenvolvedor, deixando voc\u00ea concentrar os seus esfor\u00e7os na sua id\u00e9ia.", 
+            "speakers": [
                 1
             ], 
-            "description": "Django \u00e9 um framework web escrito em Python, que possibilita o desenvolvimento de sistemas web de alta performance com eleg\u00e2ncia e rapidez. Usado por milhares de sites no mundo inteiro, Django \u00e9 desenvolvido por uma grande comunidade que tem como filosofia potencializar o desenvolvedor, deixando voc\u00ea concentrar os seus esfor\u00e7os na sua id\u00e9ia.", 
             "title": "Introdu\u00e7\u00e3o ao Django"
         }
     }, 
@@ -68,11 +69,31 @@
         "model": "core.talk", 
         "fields": {
             "start_time": "12:00:00", 
-            "speaker": [
+            "description": "J\u00e1 imaginou colocar sua id\u00e9ia no ar com apenas um comando? J\u00e1 pensou se voc\u00ea n\u00e3o precisasse se preocupar com infraestrutura de servidores? Se sua aplica\u00e7\u00e3o Django simplesmente funcionasse como que por m\u00e1gica? Com o Herike.com voc\u00ea pode!", 
+            "speakers": [
                 1
             ], 
-            "description": "J\u00e1 imaginou colocar sua id\u00e9ia no ar com apenas um comando? J\u00e1 pensou se voc\u00ea n\u00e3o precisasse se preocupar com infraestrutura de servidores? Se sua aplica\u00e7\u00e3o Django simplesmente funcionasse como que por m\u00e1gica? Com o Herike.com voc\u00ea pode!", 
             "title": "Apresentando Herike.com"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "core.media", 
+        "fields": {
+            "media_id": "5141215", 
+            "type": "SL", 
+            "talk": 2, 
+            "title": "oxenterailsempreendendoumacomunidadedesucesso-v2-100906172626-phpapp02&stripped_title=empreendendo-uma-comunidade-de-sucesso&userName=henriquebastos"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "core.media", 
+        "fields": {
+            "media_id": "QjA5faZF1A8", 
+            "type": "YT", 
+            "talk": 2, 
+            "title": "Rock n' Roll"
         }
     }
 ]
