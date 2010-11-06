@@ -9,6 +9,7 @@
 {% endfor %}
 <p>{{ talk.description }}</p>
 
+<center>
 {% for slide in slides %}
     <p>{% slideshare slide.media_id slide.title %}</p>
 {% endfor %}
@@ -16,6 +17,7 @@
 {% for video in videos %}
     <p>{% youtube video.media_id %}</p>
 {% endfor %}
+</center>
 
 <p><a href="{% url core:talks %}">voltar</a></p>
 {% endblock content %}
