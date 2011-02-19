@@ -21,7 +21,8 @@ class SubscriptionViewTest(TestCase):
             'name': 'Guido Van Rossum',
             'cpf': '11111111111',
             'email': 'bdfl@python.org',
-            'phone': '+1 754 3020 2000'
+            'phone_0': '754',
+            'phone_1': '30202000',
         })
         self.assertRedirects(response, reverse('subscription:success', args=[1]))
         self.assertTrue(Subscription.objects.exists())
@@ -34,7 +35,8 @@ class SubscriptionViewTest(TestCase):
             'name': 'Guido Van Rossum',
             'cpf': '11111111111',
             'email': 'bdfl@python.org',
-            'phone': '+1 754 3020 2000'
+            'phone_0': '754',
+            'phone_1': '30202000',
         })
         self.assertRedirects(response, reverse('subscription:success', args=[1]))
 
