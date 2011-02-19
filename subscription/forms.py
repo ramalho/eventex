@@ -39,7 +39,7 @@ class PhoneField(forms.MultiValueField):
 
 #6 - ModelForm completo
 class SubscriptionForm(forms.ModelForm):
-    phone = PhoneField()
+    phone = PhoneField(required=False)
 
     class Meta:
         model = Subscription
