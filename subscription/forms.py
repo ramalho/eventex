@@ -14,9 +14,9 @@ class PhoneWidget(forms.MultiWidget):
         super(PhoneWidget, self).__init__(widgets, attrs)
 
     def decompress(self, value):
-        if value:
-            return value.split('-')
-        return [None, None]
+        if not value:
+            return [None, None]
+        return value.split('-')
 
 class PhoneField(forms.MultiValueField):
     widget = PhoneWidget
@@ -28,13 +28,14 @@ class PhoneField(forms.MultiValueField):
         super(PhoneField, self).__init__(fields, *args, **kwargs)
 
     def compress(self, data_list):
-        if data_list:
-            if data_list[0] in EMPTY_VALUES:
-                raise forms.ValidationError(u'DDD inválido.')
-            if data_list[1] in EMPTY_VALUES:
-                raise forms.ValidationError(u'Número inválido.')
-            return '%s-%s' % tuple(data_list)
-        return None
+        if not data_list:
+            return None
+
+        if data_list[0] in EMPTY_VALUES:
+            raise forms.ValidationError(u'DDD inválido.')
+        if data_list[1] in EMPTY_VALUES:
+            raise forms.ValidationError(u'Número inválido.')
+        return '%s-%s' % tuple(data_list)
 
 
 #6 - ModelForm completo
