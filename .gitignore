@@ -18,3 +18,4 @@
 /coverage
 .noseids
 local_settings.py
+/public
