@@ -29,6 +29,6 @@ class TalkDetailView(DetailView):
     context_object_name = 'talk'
 
 
-def speaker_detail(request, slug):
-    speaker = get_object_or_404(Speaker, slug=slug)
-    return direct_to_template(request, 'core/speaker_detail.html', {'speaker': speaker})
+class SpeakerDetailView(DetailView):
+    model = Speaker
+    context_object_name = 'speaker'

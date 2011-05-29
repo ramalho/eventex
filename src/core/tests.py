@@ -29,7 +29,7 @@ class PalestrasTest(TestCase):
         self.assertPage(reverse('core:talk_detail', args=[2]), 'core/talk_detail.html')
 
     def test_show_speaker_detail(self):
-        self.assertPage(reverse('core:speaker_detail', args=['henrique-bastos']), 'core/speaker_detail.html')
+        self.assertPage(reverse('core:speaker_detail', kwargs={'slug': 'henrique-bastos'}), 'core/speaker_detail.html')
 
 
 class TalkProperties(TestCase):
