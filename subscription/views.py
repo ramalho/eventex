@@ -9,6 +9,8 @@ from subscription.utils import send_subscription_email
 
 
 from django.views.generic import CreateView
+from django.views.generic import DetailView
+
 
 class SubscriptionCreateView(CreateView):
     form_class = SubscriptionForm
@@ -25,7 +27,6 @@ class SubscriptionCreateView(CreateView):
         return response
 
 
-def success(request, id):
-    subscription = get_object_or_404(Subscription, pk=id)
-    context = RequestContext(request, {'subscription': subscription})
-    return render_to_response('subscription/success.html', context)
+class SubscriptionSuccessView(DetailView):
+    template_name = 'subscription/success.html'
+    model = Subscription
