@@ -80,6 +80,14 @@ class Talk(models.Model):
     def __unicode__(self):
         return unicode(self.title)
 
+    @property
+    def slides(self):
+        return self.filter(type="SL")
+
+    @property
+    def videos(self):
+        return self.media_set.filter(type="YT")
+
 
 class Course(Talk):
     slots = models.IntegerField()
