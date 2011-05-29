@@ -11,7 +11,7 @@ class SubscriptionViewTest(TestCase):
     def test_shows_form_with_errors_when_post_with_no_data(self):
         response = self.client.post(reverse('subscriptions:subscribe'))
         self.assertEquals(200, response.status_code)
-        self.assertTemplateUsed(response, 'subscriptions/new.html')
+        self.assertTemplateUsed(response, 'subscriptions/subscription_form.html')
         self.assertTrue(isinstance(response.context['form'], SubscriptionForm))
         self.assertTrue(response.context['form'].errors)
 

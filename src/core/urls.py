@@ -5,7 +5,7 @@ from views import TalkDetailView
 from views import SpeakerDetailView
 
 
-urlpatterns = patterns('core.views',
+urlpatterns = patterns('',
     url(r'^palestras/$', TalkListView.as_view(), name='talks'),
     url(r'^palestras/(?P<pk>\d+)/$', TalkDetailView.as_view(), name='talk_detail'),
     url(r'^palestrante/(?P<slug>[-\w]+)/$', SpeakerDetailView.as_view(), name='speaker_detail'),

@@ -1,4 +1,4 @@
-from django_testtools import TestCase
+from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.db.models.query import QuerySet
 from core.models import Talk
@@ -23,7 +23,7 @@ class PalestrasTest(TestCase):
             self.assertTemplateUsed(response, template)
 
     def test_show_palestras(self):
-        self.assertPage('core:talks', 'core/talks.html')
+        self.assertPage(reverse('core:talks'), 'core/talks.html')
 
     def test_show_palestra_detail(self):
         self.assertPage(reverse('core:talk_detail', args=[2]), 'core/talk_detail.html')

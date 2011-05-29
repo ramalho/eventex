@@ -8,7 +8,7 @@ class SubscriptionUrlTest(TestCase):
     def test_successful_get_subscription_page(self):
         response = self.client.get(reverse('subscriptions:subscribe'))
         self.assertEquals(200, response.status_code)
-        self.assertTemplateUsed(response, 'subscriptions/new.html')
+        self.assertTemplateUsed(response, 'subscriptions/subscription_form.html')
 
     def test_redirects_to_success_after_valid_post(self):
         response = self.client.post(reverse('subscriptions:subscribe'), {
