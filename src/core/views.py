@@ -10,12 +10,17 @@ class HomepageView(TemplateView):
     template_name = 'index.html'
 
 
-def talks(request):
-    context = RequestContext(request, {
-        'morning_talks': Talk.objects.at_morning(),
-        'afternoon_talks': Talk.objects.at_afternoon(),
-    })
-    return render_to_response('core/talks.html', context)
+class TalkListView(TemplateView):
+    template_name = 'core/talks.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(TalkListView, self).get_context_data(**kwargs)
+
+        context['morning_talks'] = Talk.objects.at_morning()
+        context['afternoon_talks'] = Talk.objects.at_afternoon()
+
+        return context
+
 
 def talk_detail(request, talk_id):
     talk = get_object_or_404(Talk, id=talk_id)
