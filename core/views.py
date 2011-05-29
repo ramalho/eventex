@@ -24,11 +24,11 @@ class TalkListView(TemplateView):
         return context
 
 
-def speaker(request, slug):
-    speaker = get_object_or_404(Speaker, slug=slug)
-    return direct_to_template(request, 'core/speaker.html', {'speaker': speaker})
 class TalkDetailView(DetailView):
     model = Talk
     context_object_name = 'talk'
 
 
+class SpeakerDetailView(DetailView):
+    model = Speaker
+    context_object_name = 'speaker'
