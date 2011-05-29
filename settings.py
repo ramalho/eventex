@@ -118,3 +118,5 @@ INSTALLED_APPS = (
     'subscription',
     'embed',
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

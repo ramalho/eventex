@@ -8,28 +8,19 @@ from subscription.models import Subscription
 from subscription.utils import send_subscription_email
 
 
-def new(request):
-    form = SubscriptionForm()
-    context = RequestContext(request, {'form': form})
-    return render_to_response('subscription/new.html', context)
+from django.views.generic import CreateView
 
-def create(request):
-    form = SubscriptionForm(request.POST)
+class SubscriptionCreateView(CreateView):
+    form_class = SubscriptionForm
+    model = Subscription
+    success_url = '/inscricao/%(id)s/sucesso/'
 
-    if not form.is_valid():
-        context = RequestContext(request, {'form': form})
-        return render_to_response('subscription/new.html', context)
-
-    subscription = form.save()
-    # notifica o cadastro
-    send_subscription_email(subscription)
-    return HttpResponseRedirect(reverse('subscription:success', args=[ subscription.pk ]))
-
-def subscribe(request):
-    if request.method == 'POST':
-        return create(request)
-    else:
-        return new(request)
+    def form_valid(self, form):
+        response = super(SubscriptionCreateView, self).form_valid(form)
+        # envia email
+        send_subscription_email(self.object)
+        # continua...
+        return response
 
 
 def success(request, id):
