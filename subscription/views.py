@@ -13,7 +13,9 @@ from django.views.generic import CreateView
 class SubscriptionCreateView(CreateView):
     form_class = SubscriptionForm
     model = Subscription
-    success_url = '/inscricao/%(id)s/sucesso/'
+
+    def get_success_url(self):
+        return reverse('subscription:success', args=[self.object.pk])
 
     def form_valid(self, form):
         response = super(SubscriptionCreateView, self).form_valid(form)
