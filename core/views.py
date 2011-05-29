@@ -7,7 +7,10 @@ from core.models import Talk, Speaker
 
 def homepage(request):
     from django.conf import settings
-    context = {'MEDIA_URL': settings.MEDIA_URL}
+    context = {
+        'STATIC_URL': settings.STATIC_URL,
+        'MEDIA_URL': settings.MEDIA_URL,
+    }
 
     return render_to_response('index.html', context)
 
