@@ -3,6 +3,8 @@ from django.template import RequestContext
 from django.views.generic.simple import direct_to_template
 
 from django.views.generic import TemplateView
+from django.views.generic import DetailView
+
 from core.models import Talk, Speaker
 
 
@@ -22,13 +24,9 @@ class TalkListView(TemplateView):
         return context
 
 
-def talk_detail(request, talk_id):
-    talk = get_object_or_404(Talk, id=talk_id)
-    return direct_to_template(request, 'core/talk_detail.html', {
-        'talk': talk,
-        'slides': talk.media_set.filter(type="SL"),
-        'videos': talk.media_set.filter(type="YT"),
-    })
+class TalkDetailView(DetailView):
+    model = Talk
+    context_object_name = 'talk'
 
 
 def speaker_detail(request, slug):

@@ -10,11 +10,11 @@
 <p>{{ talk.description }}</p>
 
 <center>
-{% for slide in slides %}
+{% for slide in talk.slides %}
     <p>{% slideshare slide.media_id slide.title %}</p>
 {% endfor %}
 
-{% for video in videos %}
+{% for video in talk.videos %}
     <p>{% youtube video.media_id %}</p>
 {% endfor %}
 </center>

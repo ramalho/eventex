@@ -1,5 +1,7 @@
 from django_testtools import TestCase
 from django.core.urlresolvers import reverse
+from django.db.models.query import QuerySet
+from core.models import Talk
 
 
 class HomepageUrlTest(TestCase):
@@ -28,3 +30,17 @@ class PalestrasTest(TestCase):
 
     def test_show_speaker_detail(self):
         self.assertPage(reverse('core:speaker_detail', args=['henrique-bastos']), 'core/speaker_detail.html')
+
+
+class TalkProperties(TestCase):
+    fixtures = ['talks.json']
+
+    def test_slides_property(self):
+        talk = Talk.objects.get(pk=2)
+        self.assertIsInstance(talk.slides, QuerySet)
+        self.assertTrue(talk.slides.exists())
+
+    def test_videos_property(self):
+        talk = Talk.objects.get(pk=2)
+        self.assertIsInstance(talk.videos, QuerySet)
+        self.assertTrue(talk.videos.exists())
