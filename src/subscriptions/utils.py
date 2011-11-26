@@ -10,7 +10,7 @@ def send_subscription_email(subscription):
 
     subject = u'Inscrição no EventeX realizada com sucesso.'
     message = render_to_string(
-        'subscription/email.txt',
+        'subscriptions/email.txt',
         {'subscription': subscription }
     )
 

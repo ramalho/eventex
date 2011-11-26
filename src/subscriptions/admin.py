@@ -7,7 +7,7 @@ from django.utils.translation import ungettext
 from django.conf.urls.defaults import patterns, url
 from django.http import HttpResponse
 
-from subscription.models import Subscription
+from subscriptions.models import Subscription
 
 
 class SubscriptionAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 # encoding: utf-8
 from django.test import TestCase
 from django.db import IntegrityError
-from subscription.models import Subscription
+from subscriptions.models import Subscription
 
 
 class SubscriptionModelTest(TestCase):

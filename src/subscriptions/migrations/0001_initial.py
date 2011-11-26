@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'Subscription'
-        db.create_table('subscription_subscription', (
+        db.create_table('subscriptions_subscription', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('cpf', self.gf('django.db.models.fields.CharField')(unique=True, max_length=11)),
@@ -17,17 +17,17 @@ class Migration(SchemaMigration):
             ('phone', self.gf('django.db.models.fields.CharField')(max_length=20, blank=True)),
             ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
-        db.send_create_signal('subscription', ['Subscription'])
+        db.send_create_signal('subscriptions', ['Subscription'])
 
 
     def backwards(self, orm):
         
         # Deleting model 'Subscription'
-        db.delete_table('subscription_subscription')
+        db.delete_table('subscriptions_subscription')
 
 
     models = {
-        'subscription.subscription': {
+        'subscriptions.subscription': {
             'Meta': {'object_name': 'Subscription'},
             'cpf': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '11'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
@@ -38,4 +38,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['subscription']
+    complete_apps = ['subscriptions']

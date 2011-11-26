@@ -7,19 +7,19 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        
+
         # Adding field 'Subscription.paid'
-        db.add_column('subscription_subscription', 'paid', self.gf('django.db.models.fields.BooleanField')(default=False), keep_default=False)
+        db.add_column('subscriptions_subscription', 'paid', self.gf('django.db.models.fields.BooleanField')(default=False), keep_default=False)
 
 
     def backwards(self, orm):
-        
+
         # Deleting field 'Subscription.paid'
-        db.delete_column('subscription_subscription', 'paid')
+        db.delete_column('subscriptions_subscription', 'paid')
 
 
     models = {
-        'subscription.subscription': {
+        'subscriptions.subscription': {
             'Meta': {'object_name': 'Subscription'},
             'cpf': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '11'}),
             'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
@@ -31,4 +31,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['subscription']
+    complete_apps = ['subscriptions']
