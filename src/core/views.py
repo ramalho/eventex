@@ -30,6 +30,6 @@ def talk_detail(request, talk_id):
     })
 
 
-def speaker(request, slug):
+def speaker_detail(request, slug):
     speaker = get_object_or_404(Speaker, slug=slug)
-    return direct_to_template(request, 'core/speaker.html', {'speaker': speaker})
+    return direct_to_template(request, 'core/speaker_detail.html', {'speaker': speaker})

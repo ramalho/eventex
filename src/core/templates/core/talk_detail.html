@@ -5,7 +5,7 @@
 {% block content %}
 <h4>{{ talk.title }}</h4>
 {% for speaker in talk.speaker.all %}
-    <h5><a href="{% url core:speaker speaker.slug %}" title="{{ speaker.description|truncatewords:20 }}">{{ speaker.name }}</a></h5>
+    <h5><a href="{% url core:speaker_detail speaker.slug %}" title="{{ speaker.description|truncatewords:20 }}">{{ speaker.name }}</a></h5>
 {% endfor %}
 <p>{{ talk.description }}</p>
 
