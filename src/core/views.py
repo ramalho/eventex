@@ -21,9 +21,9 @@ def talks(request):
     })
     return render_to_response('core/talks.html', context)
 
-def talk_details(request, talk_id):
+def talk_detail(request, talk_id):
     talk = get_object_or_404(Talk, id=talk_id)
-    return direct_to_template(request, 'core/talk.html', {
+    return direct_to_template(request, 'core/talk_detail.html', {
         'talk': talk,
         'slides': talk.media_set.filter(type="SL"),
         'videos': talk.media_set.filter(type="YT"),
