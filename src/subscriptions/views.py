@@ -17,7 +17,7 @@ class SubscriptionCreateView(CreateView):
     model = Subscription
 
     def get_success_url(self):
-        return reverse('subscription:success', args=[self.object.pk])
+        return reverse('subscriptions:success', args=[self.object.pk])
 
     def form_valid(self, form):
         response = super(SubscriptionCreateView, self).form_valid(form)
@@ -28,5 +28,5 @@ class SubscriptionCreateView(CreateView):
 
 
 class SubscriptionSuccessView(DetailView):
-    template_name = 'subscription/success.html'
+    template_name = 'subscriptions/success.html'
     model = Subscription
